@@ -1,12 +1,12 @@
 import { Button } from '@mui/material';
 import { ReactNode } from 'react';
 
-interface CustomButtonProps {
+interface ActionButtonProps {
   text: string;
   icon: ReactNode;
 }
 
-const CustomButton = ({ text, icon }: CustomButtonProps) => (
+const ActionButton = ({ text, icon }: ActionButtonProps) => (
   <Button
     variant='text'
     sx={{
@@ -24,4 +24,4 @@ const CustomButton = ({ text, icon }: CustomButtonProps) => (
   </Button>
 );
 
-export default CustomButton;
+export default ActionButton;

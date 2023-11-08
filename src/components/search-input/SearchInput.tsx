@@ -16,18 +16,14 @@ const SearchInput = ({ defaultValue, onSearch, clearSearch }: SearchProps) => {
     setSearchTerm(e.target.value);
   };
 
-  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === 'Enter') onSearch(searchTerm);
+  const handleClick = () => {
+    setSearchTerm('');
+    clearSearch();
   };
 
   useEffect(() => {
     if (searchTerm !== defaultValue) onSearch(searchTerm);
   }, [searchTerm]);
-
-  const handleClick = () => {
-    setSearchTerm('');
-    clearSearch();
-  };
 
   const endAdornment = () => {
     if (searchTerm) {
@@ -50,7 +46,6 @@ const SearchInput = ({ defaultValue, onSearch, clearSearch }: SearchProps) => {
       placeholder='Search Facebook'
       onChange={handleChange}
       value={searchTerm}
-      onKeyDown={handleKeyDown}
       sx={{
         paddingY: 1,
         '& .MuiInputBase-root': {

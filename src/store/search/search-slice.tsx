@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 import { RequestStatus } from '../store-types';
-import SearchState from './search-types';
+import { SearchState } from './search-types';
 
 const initialState: SearchState = {
   searchTerm: '',

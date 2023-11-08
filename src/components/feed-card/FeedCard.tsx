@@ -4,7 +4,7 @@ import RecommendIcon from '@mui/icons-material/Recommend';
 import ThumbUpIcon from '@mui/icons-material/ThumbUp';
 import { Box, Divider, Typography } from '@mui/material';
 
-import Button from '../button';
+import ActionButton from '../action-button';
 
 interface FeedCardProps {
   title: string;
@@ -37,9 +37,9 @@ const FeedCard = ({ title, body, reactions }: FeedCardProps) => (
     </Box>
     <Divider />
     <Box display='flex' marginTop='4px'>
-      <Button text='Like' icon={<ThumbUpIcon />} />
-      <Button text='Comment' icon={<ChatBubbleOutlineOutlinedIcon />} />
-      <Button text='Share' icon={<IosShareIcon />} />
+      <ActionButton text='Like' icon={<ThumbUpIcon />} />
+      <ActionButton text='Comment' icon={<ChatBubbleOutlineOutlinedIcon />} />
+      <ActionButton text='Share' icon={<IosShareIcon />} />
     </Box>
   </Box>
 );
