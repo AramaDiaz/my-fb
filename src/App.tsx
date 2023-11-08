@@ -1,25 +1,23 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Box } from '@mui/material';
+import { Contacts, Header, LeftSidebar, NewsFeed } from './sections';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Box width='100%'>
+      <Header />
+      <Box
+        sx={{
+          display: 'flex',
+          height: 'auto',
+          backgroundColor: '#f0f2f5',
+          paddingInline: 1,
+        }}
+      >
+        <LeftSidebar />
+        <NewsFeed />
+        <Contacts />
+      </Box>
+    </Box>
   );
 }
 
