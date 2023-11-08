@@ -1,6 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import SearchState from './search-types';
+
 import { RequestStatus } from '../store-types';
+import SearchState from './search-types';
 
 const initialState: SearchState = {
   searchTerm: '',
@@ -32,9 +33,7 @@ const searchSlice = createSlice({
     ) => {
       state.requestStatus = action.payload;
     },
-    resetSearchQuery: () => {
-      return { ...initialState };
-    },
+    resetSearchQuery: () => ({ ...initialState }),
   },
 });
 

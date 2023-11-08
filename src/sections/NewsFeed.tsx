@@ -1,10 +1,11 @@
 import { Box } from '@mui/material';
-import { useAppDispatch, useAppSelector } from '../hooks';
-import { FeedCard, Loader } from '../components';
-import { Post } from '../api/posts-api';
-import { searchSelectors } from '../store/search';
-import { loadPosts, postsSelector } from '../store/posts';
 import { useEffect } from 'react';
+
+import { Post } from '../api/posts-api';
+import { FeedCard, Loader } from '../components';
+import { useAppDispatch, useAppSelector } from '../hooks';
+import { loadPosts, postsSelector } from '../store/posts';
+import { searchSelectors } from '../store/search';
 import { RequestStatus } from '../store/store-types';
 
 const NewsFeed = () => {

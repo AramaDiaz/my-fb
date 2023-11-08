@@ -1,10 +1,8 @@
 import { Post } from '../../api/posts-api';
 import { RequestStatus } from '../store-types';
 
-interface SearchState {
+export interface SearchState {
   searchTerm: string;
   results: Post[];
   requestStatus: RequestStatus;
 }
-
-export default SearchState;

@@ -1,11 +1,12 @@
-import { takeLatest, put, call, fork } from 'redux-saga/effects';
+import { call, fork, put, takeLatest } from 'redux-saga/effects';
+
+import postsApi from '../../api/posts-api';
 import {
   loadPosts,
   setPostsError,
   setPostsFulfilled,
   setPostsLoading,
 } from '../posts';
-import postsApi from '../../api/posts-api';
 import { RequestStatus } from '../store-types';
 
 function* onLoadPosts(): Generator {
@@ -19,7 +20,6 @@ function* onLoadPosts(): Generator {
       })
     );
   } catch (error) {
-    console.log('error', error);
     yield put(setPostsError(RequestStatus.Error));
   }
 }

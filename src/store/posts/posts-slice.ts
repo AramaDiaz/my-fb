@@ -1,6 +1,7 @@
-import { PayloadAction, createAction, createSlice } from '@reduxjs/toolkit';
-import { PostsState } from '.';
+import { createAction, createSlice, PayloadAction } from '@reduxjs/toolkit';
+
 import { RequestStatus } from '../store-types';
+import { PostsState } from '.';
 
 const initialState: PostsState = {
   posts: [],

@@ -1,14 +1,15 @@
-import { takeLatest, put, call, fork } from 'redux-saga/effects';
+import { call, put, takeLatest } from 'redux-saga/effects';
+
+import searchApi from '../../api/search-api';
 import {
-  setSearchResultsLoading,
-  setSearchQuery,
-  setSearchResultsFulfilled,
-  setSearchError,
   // clearSearch,
   // resetSearchTerm,
-  resetSearchQuery,
+  // resetSearchQuery,
+  setSearchError,
+  setSearchQuery,
+  setSearchResultsFulfilled,
+  setSearchResultsLoading,
 } from '../search';
-import searchApi from '../../api/search-api';
 import { RequestStatus } from '../store-types';
 
 function* onLoadSearchedPosts({
@@ -29,7 +30,6 @@ function* onLoadSearchedPosts({
       })
     );
   } catch (error) {
-    console.log('error', error);
     yield put(setSearchError(RequestStatus.Error));
   }
 }

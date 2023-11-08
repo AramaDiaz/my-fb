@@ -1,7 +1,7 @@
-import { useState, useEffect } from 'react';
 import { Search } from '@mui/icons-material';
-import { IconButton, InputAdornment, TextField } from '@mui/material';
 import ClearIcon from '@mui/icons-material/Clear';
+import { IconButton, InputAdornment, TextField } from '@mui/material';
+import { useEffect, useState } from 'react';
 
 interface SearchProps {
   defaultValue: string;
@@ -26,7 +26,6 @@ const SearchInput = ({ defaultValue, onSearch, clearSearch }: SearchProps) => {
 
   const handleClick = () => {
     setSearchTerm('');
-    console.log('in serach input');
     clearSearch();
   };
 
@@ -40,34 +39,34 @@ const SearchInput = ({ defaultValue, onSearch, clearSearch }: SearchProps) => {
         </InputAdornment>
       );
     }
+
+    return '';
   };
 
   return (
-    <>
-      <TextField
-        size='small'
-        variant='outlined'
-        placeholder='Search Facebook'
-        onChange={handleChange}
-        value={searchTerm}
-        onKeyDown={handleKeyDown}
-        sx={{
-          paddingY: 1,
-          '& .MuiInputBase-root': {
-            backgroundColor: '#f0f2f5',
-            borderRadius: '25px',
-          },
-        }}
-        InputProps={{
-          startAdornment: (
-            <InputAdornment position='start'>
-              <Search />
-            </InputAdornment>
-          ),
-          endAdornment: endAdornment(),
-        }}
-      />
-    </>
+    <TextField
+      size='small'
+      variant='outlined'
+      placeholder='Search Facebook'
+      onChange={handleChange}
+      value={searchTerm}
+      onKeyDown={handleKeyDown}
+      sx={{
+        paddingY: 1,
+        '& .MuiInputBase-root': {
+          backgroundColor: '#f0f2f5',
+          borderRadius: '25px',
+        },
+      }}
+      InputProps={{
+        startAdornment: (
+          <InputAdornment position='start'>
+            <Search />
+          </InputAdornment>
+        ),
+        endAdornment: endAdornment(),
+      }}
+    />
   );
 };
 

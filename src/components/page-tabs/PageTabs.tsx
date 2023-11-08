@@ -1,10 +1,10 @@
-import { useState } from 'react';
-import { Tabs, Tab } from '@mui/material';
+import GroupsIcon from '@mui/icons-material/Groups2Outlined';
 import HomeIcon from '@mui/icons-material/Home';
 import VideoIcon from '@mui/icons-material/OndemandVideo';
 import MarketIcon from '@mui/icons-material/Storefront';
 import GamingIcon from '@mui/icons-material/VideogameAssetOutlined';
-import GroupsIcon from '@mui/icons-material/Groups2Outlined';
+import { Tab, Tabs } from '@mui/material';
+import { useState } from 'react';
 
 const PageTabs = () => {
   const [value, setValue] = useState(0);

@@ -1,13 +1,14 @@
 import { Avatar, Box, IconButton } from '@mui/material';
 import { useEffect, useState } from 'react';
-import { PageTabs, SearchField } from '../components';
+
 import { ReactComponent as FacebookLogo } from '../assests/icons/facebook-icon.svg';
 import { ReactComponent as Menu } from '../assests/icons/menu.svg';
 import { ReactComponent as Messenger } from '../assests/icons/messenger.svg';
 import { ReactComponent as Notifications } from '../assests/icons/notifications.svg';
 import myImg from '../assests/images/pic.jpg';
+import { PageTabs, SearchField } from '../components';
 import { useAppDispatch } from '../hooks';
-import { setSearchQuery, resetSearchQuery } from '../store/search';
+import { resetSearchQuery, setSearchQuery } from '../store/search';
 import { useDebounce } from '../utils';
 
 const Header = () => {
@@ -20,7 +21,6 @@ const Header = () => {
 
   const clearQuery = () => {
     setQuery('');
-    console.log('in header');
     dispatch(resetSearchQuery());
   };
 

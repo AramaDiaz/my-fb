@@ -1,0 +1,89 @@
+{
+  "env": {
+    "browser": true,
+    "es2021": true
+  },
+  "extends": [
+    "plugin:react/recommended",
+    "plugin:jest/recommended",
+    "airbnb",
+    "airbnb-typescript",
+    "prettier"
+  ],
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "ecmaVersion": "latest",
+    "sourceType": "module",
+    "project": "./tsconfig.json"
+  },
+  "plugins": ["react", "@typescript-eslint", "jest", "simple-import-sort"],
+  "rules": {
+    "react/function-component-definition": [
+      2,
+      {
+        "namedComponents": "arrow-function"
+      }
+    ],
+    "arrow-body-style": ["error", "as-needed"],
+    "react/jsx-filename-extension": [1, { "extensions": [".tsx"] }],
+    "react/react-in-jsx-scope": "off",
+    "no-restricted-exports": ["error", { "restrictedNamedExports": [""] }],
+    "react/jsx-props-no-spreading": [
+      2,
+      {
+        "custom": "ignore"
+      }
+    ],
+    "import/no-extraneous-dependencies": [
+      "error",
+      {
+        "devDependencies": ["**/*.test.*", "./src/test-utils/**/*"],
+        "peerDependencies": true
+      }
+    ],
+    "no-param-reassign": [
+      "error",
+      {
+        "props": true,
+        "ignorePropertyModificationsFor": ["state"]
+      }
+    ],
+    "import/no-cycle": [
+      0,
+      {
+        "maxDepth": 10,
+        "ignoreExternal": true
+      }
+    ],
+    "simple-import-sort/imports": [
+      2,
+      {
+        "groups": [
+          ["^@?\\w"],
+          // Side effect imports
+          [
+            "^\\u0000",
+            "^(@|components|api|assets|pages|sections|store|utils|app-store|hooks)(/.*|$)",
+            "^\\.\\.(?!/?$)",
+            "^\\.\\./?$",
+            "^\\./(?=.*/)(?!/?$)",
+            "^\\.(?!/?$)",
+            "^\\./?$"
+          ],
+          // Style imports
+          ["^.+\\.s?css$"]
+        ]
+      }
+    ],
+    "simple-import-sort/exports": "error",
+    "no-unused-expressions": "off",
+    "@typescript-eslint/no-unused-expressions": "off",
+    "import/prefer-default-export": [0],
+    "react/prop-types": "off",
+    "react/require-default-props": "off",
+    "no-nested-ternary": "off",
+    "no-console": ["error", { "allow": ["warn", "error"] }]
+  }
+}

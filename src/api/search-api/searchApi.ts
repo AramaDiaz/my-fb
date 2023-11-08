@@ -5,7 +5,6 @@ const searchApi = {
     const response = await apiInstance
       .get(`posts/search?q=${query}`)
       .then((res) => res);
-    console.log(response.data);
     return response.data;
   },
 };
