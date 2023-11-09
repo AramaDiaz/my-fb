@@ -29,7 +29,7 @@ const NewsFeed = () => {
         textAlign: 'center',
       }}
     >
-      NewsFeeds
+      NewsFeed
       {getPostsStatus === RequestStatus.Loading ||
       getSearchStatus === RequestStatus.Loading ? (
         <Loader />
