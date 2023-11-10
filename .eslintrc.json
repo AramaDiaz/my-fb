@@ -84,6 +84,6 @@
     "react/prop-types": "off",
     "react/require-default-props": "off",
     "no-nested-ternary": "off",
-    "no-console": ["error", { "allow": ["warn", "error"] }]
+    "no-console": 0
   }
 }
