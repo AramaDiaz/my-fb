@@ -1,17 +1,24 @@
-import GroupsIcon from '@mui/icons-material/Groups2Outlined';
-import HomeIcon from '@mui/icons-material/Home';
-import VideoIcon from '@mui/icons-material/OndemandVideo';
-import MarketIcon from '@mui/icons-material/Storefront';
-import GamingIcon from '@mui/icons-material/VideogameAssetOutlined';
-import { Tab, Tabs } from '@mui/material';
-import { useState } from 'react';
+import { Tabs } from '@mui/material';
+import { ReactElement, SyntheticEvent, useState } from 'react';
 
-const PageTabs = () => {
+import LinkTab from './LinkTab';
+
+interface PageTabsProps {
+  navigationTabs: Array<{
+    href: string;
+    index: number;
+    icon: ReactElement;
+    label: string;
+  }>;
+}
+
+const PageTabs = ({ navigationTabs }: PageTabsProps) => {
   const [value, setValue] = useState(0);
 
-  const handleChange = (event: React.SyntheticEvent, newValue: number) => {
+  const handleChange = (event: SyntheticEvent, newValue: number) => {
     setValue(newValue);
   };
+  console.log('inTabs', value);
 
   return (
     <Tabs
@@ -26,11 +33,19 @@ const PageTabs = () => {
         '& .MuiTabs-indicator': { backgroundColor: '#0a66ff' },
       }}
     >
-      <Tab icon={<HomeIcon fontSize='large' />} aria-label='Home' />
-      <Tab icon={<VideoIcon fontSize='large' />} aria-label='Video' />
-      <Tab icon={<MarketIcon fontSize='large' />} aria-label='Marketplace' />
-      <Tab icon={<GroupsIcon fontSize='large' />} aria-label='Groups' />
-      <Tab icon={<GamingIcon fontSize='large' />} aria-label='Gaming' />
+      {navigationTabs.map(({ href, index, icon, label }) => {
+        console.log('value', value);
+        return (
+          <LinkTab
+            key={index}
+            href={href}
+            value={index}
+            icon={icon}
+            label={label}
+            onChange={handleChange}
+          />
+        );
+      })}
     </Tabs>
   );
 };

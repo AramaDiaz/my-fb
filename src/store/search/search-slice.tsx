@@ -1,4 +1,4 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
 
 import { RequestStatus } from '../store-types';
 import { SearchState } from './search-types';
@@ -7,6 +7,7 @@ const initialState: SearchState = {
   searchTerm: '',
   results: [],
   requestStatus: RequestStatus.Default,
+  error: undefined,
 };
 
 const searchSlice = createSlice({
@@ -16,33 +17,25 @@ const searchSlice = createSlice({
     setSearchQuery: (state: SearchState, action) => {
       state.searchTerm = action.payload;
     },
+    setSearchResultsTrigger: (state: SearchState, _action) => {
+      state.requestStatus = RequestStatus.Loading;
+    },
     setSearchResultsFulfilled: (state: SearchState, action) => {
       state.results = action.payload.posts;
-      state.requestStatus = action.payload.requestStatus;
+      state.requestStatus = RequestStatus.Fulfilled;
     },
-    setSearchResultsLoading: (
-      state: SearchState,
-      action: PayloadAction<RequestStatus>
-    ) => {
-      state.requestStatus = action.payload;
+    setSearchError: (state: SearchState, action) => {
+      state.requestStatus = RequestStatus.Error;
+      state.error = action.payload;
     },
-
-    setSearchError: (
-      state: SearchState,
-      action: PayloadAction<RequestStatus>
-    ) => {
-      state.requestStatus = action.payload;
-    },
-    resetSearchQuery: () => ({ ...initialState }),
   },
 });
 
 export const {
   setSearchQuery,
+  setSearchResultsTrigger,
   setSearchResultsFulfilled,
-  setSearchResultsLoading,
   setSearchError,
-  resetSearchQuery,
 } = searchSlice.actions;
 
 export default searchSlice.reducer;

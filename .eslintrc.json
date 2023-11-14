@@ -36,13 +36,7 @@
         "custom": "ignore"
       }
     ],
-    "import/no-extraneous-dependencies": [
-      "error",
-      {
-        "devDependencies": ["**/*.test.*", "./src/test-utils/**/*"],
-        "peerDependencies": true
-      }
-    ],
+    "import/no-extraneous-dependencies": [0, { "devDependencies": false }],
     "no-param-reassign": [
       "error",
       {
@@ -62,7 +56,6 @@
       {
         "groups": [
           ["^@?\\w"],
-          // Side effect imports
           [
             "^\\u0000",
             "^(@|components|api|assets|pages|sections|store|utils|app-store|hooks)(/.*|$)",
@@ -72,12 +65,19 @@
             "^\\.(?!/?$)",
             "^\\./?$"
           ],
-          // Style imports
           ["^.+\\.s?css$"]
         ]
       }
     ],
-    "simple-import-sort/exports": "error",
+    "no-unused-vars": "off",
+    "@typescript-eslint/no-unused-vars": [
+      "warn",
+      {
+        "argsIgnorePattern": "^_",
+        "varsIgnorePattern": "^_",
+        "caughtErrorsIgnorePattern": "^_"
+      }
+    ],
     "no-unused-expressions": "off",
     "@typescript-eslint/no-unused-expressions": "off",
     "import/prefer-default-export": [0],

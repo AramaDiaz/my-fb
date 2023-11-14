@@ -3,30 +3,32 @@ import ClearIcon from '@mui/icons-material/Clear';
 import { IconButton, InputAdornment, TextField } from '@mui/material';
 import { useEffect, useState } from 'react';
 
+import { useDebounce } from '../../utils';
+
 interface SearchProps {
   defaultValue: string;
   onSearch: (searchTerm: string) => void;
-  clearSearch: () => void;
 }
 
-const SearchInput = ({ defaultValue, onSearch, clearSearch }: SearchProps) => {
+const SearchInput = ({ defaultValue, onSearch }: SearchProps) => {
   const [searchTerm, setSearchTerm] = useState<string>(defaultValue || '');
+  const debouncedSearchValue = useDebounce(searchTerm);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setSearchTerm(e.target.value);
+    const { value } = e.target;
+    setSearchTerm(value);
   };
 
   const handleClick = () => {
     setSearchTerm('');
-    clearSearch();
   };
 
   useEffect(() => {
-    if (searchTerm !== defaultValue) onSearch(searchTerm);
-  }, [searchTerm]);
+    onSearch(debouncedSearchValue);
+  }, [debouncedSearchValue]);
 
   const endAdornment = () => {
-    if (searchTerm) {
+    if (searchTerm !== '') {
       return (
         <InputAdornment position='end'>
           <IconButton onClick={handleClick}>

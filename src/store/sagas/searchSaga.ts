@@ -2,15 +2,10 @@ import { call, put, takeLatest } from 'redux-saga/effects';
 
 import searchApi from '../../api/search-api';
 import {
-  // clearSearch,
-  // resetSearchTerm,
-  // resetSearchQuery,
   setSearchError,
-  setSearchQuery,
   setSearchResultsFulfilled,
-  setSearchResultsLoading,
+  setSearchResultsTrigger,
 } from '../search';
-import { RequestStatus } from '../store-types';
 
 function* onLoadSearchedPosts({
   payload,
@@ -18,7 +13,6 @@ function* onLoadSearchedPosts({
   payload: string;
   type: string;
 }): Generator {
-  yield put(setSearchResultsLoading(RequestStatus.Loading));
   try {
     const postId = payload;
     const response: any = yield call(searchApi.fetchSearch, postId);
@@ -26,16 +20,15 @@ function* onLoadSearchedPosts({
     yield put(
       setSearchResultsFulfilled({
         posts: response.posts,
-        requestStatus: RequestStatus.Fulfilled,
       })
     );
   } catch (error) {
-    yield put(setSearchError(RequestStatus.Error));
+    yield put(setSearchError(error));
   }
 }
 
 function* searchedPosts() {
-  yield takeLatest(setSearchQuery.type, onLoadSearchedPosts);
+  yield takeLatest(setSearchResultsTrigger.type, onLoadSearchedPosts);
 }
 
 // function* onClearSearchedPosts(): Generator {

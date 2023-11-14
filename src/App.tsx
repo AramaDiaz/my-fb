@@ -1,11 +1,15 @@
-import { Box } from '@mui/material';
+import { Provider } from 'react-redux';
+import { BrowserRouter } from 'react-router-dom';
 
-import { Home } from './pages';
+import { AppRouter } from './services/router';
+import store from './app-store';
 
 const App = () => (
-  <Box width='100%'>
-    <Home />
-  </Box>
+  <BrowserRouter>
+    <Provider store={store}>
+      <AppRouter />
+    </Provider>
+  </BrowserRouter>
 );
 
 export default App;
