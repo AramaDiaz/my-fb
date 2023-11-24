@@ -8,9 +8,10 @@ import { useDebounce } from '../../utils';
 interface SearchProps {
   defaultValue: string;
   onSearch: (searchTerm: string) => void;
+  onClear: () => void;
 }
 
-const SearchInput = ({ defaultValue, onSearch }: SearchProps) => {
+const SearchInput = ({ defaultValue, onSearch, onClear }: SearchProps) => {
   const [searchTerm, setSearchTerm] = useState<string>(defaultValue || '');
   const debouncedSearchValue = useDebounce(searchTerm);
 
@@ -21,6 +22,7 @@ const SearchInput = ({ defaultValue, onSearch }: SearchProps) => {
 
   const handleClick = () => {
     setSearchTerm('');
+    onClear();
   };
 
   useEffect(() => {

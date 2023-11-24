@@ -15,7 +15,11 @@ import myImg from '../assets/images/pic.jpg';
 import { PageTabs, SearchField } from '../components';
 import { useAppDispatch, useAppSelector } from '../hooks';
 import {
+  getPage,
   getSearchTerm,
+  resetSearchState,
+  setPage,
+  // resetPage,
   setSearchQuery,
   setSearchResultsTrigger,
 } from '../store/search';
@@ -23,11 +27,20 @@ import {
 const Header = () => {
   const dispatch = useAppDispatch();
   const search = useAppSelector(getSearchTerm);
+  const page = useAppSelector(getPage);
 
   const handleSearch = (searchTerm: string) => {
+    dispatch(setPage(0));
     dispatch(setSearchQuery(searchTerm));
-    dispatch(setSearchResultsTrigger(searchTerm));
+    dispatch(
+      setSearchResultsTrigger({
+        query: searchTerm,
+        page,
+      })
+    );
   };
+
+  const handleClearSearch = () => dispatch(resetSearchState());
 
   const navigationTabs = [
     {
@@ -63,8 +76,8 @@ const Header = () => {
   ];
 
   useEffect(() => {
-    dispatch(setSearchResultsTrigger(search));
-  }, [dispatch]);
+    dispatch(setSearchResultsTrigger({ query: search, page }));
+  }, []);
 
   return (
     <Box
@@ -80,7 +93,11 @@ const Header = () => {
         <Avatar sx={{ padding: 1, bgcolor: 'transparent' }}>
           <FacebookLogo />
         </Avatar>
-        <SearchField defaultValue={search} onSearch={handleSearch} />
+        <SearchField
+          defaultValue={search}
+          onSearch={handleSearch}
+          onClear={handleClearSearch}
+        />
       </Box>
 
       <PageTabs navigationTabs={navigationTabs} />

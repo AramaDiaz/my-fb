@@ -18,7 +18,6 @@ const PageTabs = ({ navigationTabs }: PageTabsProps) => {
   const handleChange = (event: SyntheticEvent, newValue: number) => {
     setValue(newValue);
   };
-  console.log('inTabs', value);
 
   return (
     <Tabs
@@ -33,19 +32,16 @@ const PageTabs = ({ navigationTabs }: PageTabsProps) => {
         '& .MuiTabs-indicator': { backgroundColor: '#0a66ff' },
       }}
     >
-      {navigationTabs.map(({ href, index, icon, label }) => {
-        console.log('value', value);
-        return (
-          <LinkTab
-            key={index}
-            href={href}
-            value={index}
-            icon={icon}
-            label={label}
-            onChange={handleChange}
-          />
-        );
-      })}
+      {navigationTabs.map(({ href, index, icon, label }) => (
+        <LinkTab
+          key={index}
+          href={href}
+          value={index}
+          icon={icon}
+          label={label}
+          onChange={handleChange}
+        />
+      ))}
     </Tabs>
   );
 };

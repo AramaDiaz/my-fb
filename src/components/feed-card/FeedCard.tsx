@@ -3,6 +3,7 @@ import IosShareIcon from '@mui/icons-material/IosShare';
 import RecommendIcon from '@mui/icons-material/Recommend';
 import ThumbUpIcon from '@mui/icons-material/ThumbUp';
 import { Box, Divider, Typography } from '@mui/material';
+import React from 'react';
 
 import ActionButton from '../action-button';
 
@@ -12,7 +13,7 @@ interface FeedCardProps {
   reactions: number;
 }
 
-const FeedCard = ({ title, body, reactions }: FeedCardProps) => (
+const FeedCard = React.memo(({ title, body, reactions }: FeedCardProps) => (
   <Box
     width='60%'
     display='flex'
@@ -42,6 +43,6 @@ const FeedCard = ({ title, body, reactions }: FeedCardProps) => (
       <ActionButton text='Share' icon={<IosShareIcon />} />
     </Box>
   </Box>
-);
+));
 
 export default FeedCard;

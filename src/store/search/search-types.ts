@@ -3,8 +3,12 @@ import { RequestStatus } from '../store-types';
 export interface SearchState {
   searchTerm: string;
   results: Post[];
-  requestStatus: RequestStatus;
+  pagination: {
+    page: number;
+    totalResults: number;
+  };
   error?: string;
+  requestStatus: RequestStatus;
 }
 
 export interface Post {
