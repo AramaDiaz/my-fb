@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/my-fb/static/css/main.e6c13ad2.css",
-    "main.js": "/my-fb/static/js/main.612b8ec2.js",
+    "main.js": "/my-fb/static/js/main.475bc702.js",
     "static/media/pic.jpg": "/my-fb/static/media/pic.45251c5ec7d4b6c04aec.jpg",
     "static/media/menu.svg": "/my-fb/static/media/menu.1dbe5842bee61346c1cf5540c093f4af.svg",
     "static/media/facebook-icon.svg": "/my-fb/static/media/facebook-icon.5eeab832ebe15a44ba90256b0f6a9536.svg",
@@ -9,10 +9,10 @@
     "static/media/notifications.svg": "/my-fb/static/media/notifications.84d1061090157510cb6a02b5a4f752e0.svg",
     "static/media/messenger.svg": "/my-fb/static/media/messenger.5907ac6261d0967534ae194279914391.svg",
     "main.e6c13ad2.css.map": "/my-fb/static/css/main.e6c13ad2.css.map",
-    "main.612b8ec2.js.map": "/my-fb/static/js/main.612b8ec2.js.map"
+    "main.475bc702.js.map": "/my-fb/static/js/main.475bc702.js.map"
   },
   "entrypoints": [
     "static/css/main.e6c13ad2.css",
-    "static/js/main.612b8ec2.js"
+    "static/js/main.475bc702.js"
   ]
 }
